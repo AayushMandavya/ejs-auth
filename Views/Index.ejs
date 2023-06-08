@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        display:flex; flex-direction:column; justify-content:center;
+        min-height:100vh;
+        margin-left: 50%;
+      }
+
+        button{
+            background-color: red;
+            border: none;
+            border-radius: 20px;
+            width: 100px;
+        }
+        li{
+            padding: 10px;
+            display: flex;
+            margin: 10px;
+            justify-content: space-between;
+        }
+      
+    </style>
+</head>
+<body>
+    <h1>
+        TODO App
+    </h1>
+    <form class="logout" action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+    <form action="/add-todo" method="post">
+        <input type="text" name="todo"/>
+        <input type="submit" name="submit"/>
+    </form>
+    <div class="itens">
+        <% items.forEach((element,index) =>{ %>
+            <li>
+                <form action="/complete" method="POST">
+                    <input type="checkbox" formaction="/complete" <% if (element.completed) { %> checked <% }  %>>
+                    <p><%= element.title %></p>
+                    <button class="delete" formaction="/remove-todo" name="delete" value="<%= index %>" type="submit">Remove</button>
+            </li>
+            
+       <% }) %>
+    </form>
+</div>
+
+</body>
+</html>
